@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cstdlib>
+int pens_in_ster(int st, int sh, int pn)
+{
+    return (st*240 + sh*12 + pn);
+}
+void pens_to_ster(int sump, int& st, int& sh, int& pn)
+{
+    st = sump/240;
+    sh = sump%240/12;
+    pn = sump%240%12;
+}
+int main()
+{
+    setlocale(LC_ALL, "");
+    int st, sh, pn, op, sum, sum1, sum2;
+    char ch, div;
+    std::cout << "Введите первый операнд: ";
+    std::cin >> st >> div >> sh >> div >> pn;
+    sum1 = pens_in_ster(st, sh, pn);
+    std::cout << "Введите операцию: ";
+    std::cin >> ch;
+    std::cout << "Введите второй операнд: ";
+    if (ch == '*')
+        std::cin >> op;
+    else
+    {
+        std::cin >> st >> div >> sh >> div >> pn;
+        sum2 = pens_in_ster(st, sh, pn);
+    }
+    switch (ch)
+    {
+        case '+': sum = sum1 + sum2; break;
+        case '-': sum = abs(sum1 - sum2); break;
+        case '*': sum = sum1 * op;
+    }
+    pens_to_ster(sum, st, sh, pn);
+    std::cout << st << div << sh << div << pn << std::endl;
+    
+    return 0;
+}

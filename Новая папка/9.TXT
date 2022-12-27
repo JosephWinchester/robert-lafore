@@ -1,0 +1,17 @@
+#include <iostream>
+#include <iomanip> 
+using namespace std;
+int main()
+{
+ int guest, place, var, variant=1;
+ cout << "Vvedite kol-vo gostey: ";
+ cin >> guest;
+ cout << "\nVvedite kol-vo mest: ";
+ cin >> place;
+ var = guest - place;
+ for (int j = guest; j>var; j--)
+  variant *= j;
+ cout << "Chislo variantov: " << variant << endl;
+ system ("pause");
+  return 0;                                                     
+}

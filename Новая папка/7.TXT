@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+ double vklad, let, proz, s, sum;
+ setlocale (0, "");
+ cout << "введите начальный вклад: ";
+ cin >> vklad;
+ cout << " \nВведите число лет: ";
+ cin >> let;
+ cout << "\nВведите процентную ставку: ";
+ cin >> proz;
+ sum=vklad;
+ for (int j = let; j>0; j--)
+ {
+  s = sum/100*proz;
+  sum = s + sum;
+ }
+ cout << "Через " << let << " лет вы получите " << sum << " долларов" << endl; 
+ system ("pause");
+ return 0;
+}

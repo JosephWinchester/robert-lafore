@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+ unsigned int j;
+ unsigned long fact = 1;  
+ int ch;// тип long для результата
+  setlocale (0, "");
+do 
+{
+ fact =1;
+ cout << "Введите целое число: ";
+ cin >> j; 
+
+ for(j; j > 0; j--)     // умножение 1 на
+  fact *= j;                    // numb, numb-1, ..., 2, 1
+ cout << "Факториал числа равен " << fact << endl;
+ cout << "еще раз? (нет - 0, да - 1)" << endl;
+ cin >> ch;
+} 
+while (ch != 0);
+
+ return 0;
+}
