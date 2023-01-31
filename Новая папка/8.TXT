@@ -12,7 +12,7 @@ int main()
   cin >> funt2 >> ch >> shill2 >> ch >> pens2;
   funt = funt1 + funt2;
   shill = shill1 + shill2;
-  if (shill > 19)
+  if (shill > 18)
   {
    funt++;
    shill = shill - 20;
