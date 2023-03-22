@@ -1,35 +1,44 @@
-#include <iostream>   
+#include <io.h> // _setmode
+#include <fcntl.h> // for const _O_U16TEXT
+#include <iostream>
+#include <iomanip> // setw
 using namespace std;
 
-class Employee
+class employee 
 {
- private:
-  int number;
-  float salary;
- public:
-  Employee() : number(0), salary(0)
-  {}
-  Employee(int num, float sal) : number(num), salary(sal)
-  {}
-  void get_empl()
-  {
-   cout << "number of the employee" << endl;
-   cin >> number;
-   cout << "salary" << endl;
-   cin >> salary;
-  }
-  void display()const
-  { cout << "employee " << number << ", salary " << salary << "$" << endl; };
+private:
+	int number;   
+	float salary; 
+public:
+	// method for getting class data from the user from the keyboard
+	void get()
+		{ wcout << L"Number and salary of employees: "; wcin >> number >> salary; }
+	// the constant method displays the values of the fields on the screen
+	void display() const
+		{ wcout << setw(5) << number << setw(9) << salary << endl; }
 };
+
 int main()
 {
- Employee empl_1, empl_2, empl_3;
- empl_1.get_empl();
- empl_2.get_empl();
- empl_3.get_empl();
- empl_1.display();
- empl_2.display();
- empl_3.display();
- system ("pause");
- return 0;
+	// switching the standard output stream to Unicode format
+	_setmode(_fileno(stdout), _O_U16TEXT);
+	// switching the standard input stream to Unicode format
+	_setmode(_fileno(stdin), _O_U16TEXT);
+	
+	employee emp1, emp2, emp3; // object for class employee
+
+	// we get information about three employees from the keyboard
+	wcout << L"Enter the details of the three employees\n";
+	emp1.get();
+	emp2.get();
+	emp3.get();
+
+	// displaying information about each of the employees on the screen
+	wcout << L"\nInformation about the company's employees:\n"
+		  << setw(5) << L"Number" << setw(9) << L"Salary" << endl;
+	emp1.display();
+	emp2.display();
+	emp3.display();
+
+	return 0;
 }
