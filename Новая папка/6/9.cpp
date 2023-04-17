@@ -1,40 +1,42 @@
-#include <iostream>   
+#include<iostream>
+
 using namespace std;
-class Fraction
-{
- private:
-  int numerator, denominator;
- public:
-  Fraction():numerator(0), denominator(0)
-  {}
-  Fraction(int num, int denom) : numerator(num), denominator(denom)
-  {}
-  char ch;
-  void get_fr()
-  {
-   cout << "enter fraction" << endl;
-   cin >> numerator >> ch >> denominator;
-  }
-  void add_fr(Fraction f1, Fraction f2)
-  {
-   numerator = f1.numerator * f2.denominator + f1.denominator * f2.numerator;
-   denominator = f1.denominator * f2.denominator;
-  }
-  void disp_fr()
-  { cout << numerator << "/" << denominator << endl; }
+
+class addF{
+    int num, den;
+    public:
+        void getData();
+        void addFraction(addF, addF);
+        void display();
 };
-int main()
-{
- Fraction fr1, fr2, fr_sum;
- char ch;
- do
- {
-  fr1.get_fr();
-  fr2.get_fr();
-  fr_sum.add_fr(fr1, fr2);
-  fr_sum.disp_fr();
-  cout << "repeat? (y/n)" << endl; cin >> ch;
- }
- while (ch != 'n');
- return 0;
+
+void addF::getData(){
+    char temp;
+	cin >> num >> temp >> den;
+}
+
+void addF::addFraction(addF f1, addF f2){
+    num = f1.num * f2.den + f1.den * f2.num;
+	den = f1.den * f2.den;
+}
+
+void addF::display(){
+    cout << "Sum is: " << num << "/" << den << endl;
+}
+
+int main(){
+    char choice;
+    addF f1, f2, f3;
+    do{
+        cout << "Enter first fraction in p/q: ";
+        f1.getData();
+        cout << "Enter second fraction in p/q: ";
+        f2.getData();
+        f3.addFraction(f1, f2);
+        f3.display();
+        cout << "Do you want to continue (y/n): ";
+        cin >> choice;
+    }while(choice == 'y' || choice == 'Y');
+    cout << endl;
+    return 0;
 }
