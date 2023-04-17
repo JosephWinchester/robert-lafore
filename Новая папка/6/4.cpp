@@ -1,44 +1,45 @@
-#include <io.h> // _setmode
-#include <fcntl.h> // for const _O_U16TEXT
-#include <iostream>
-#include <iomanip> // setw
+#include<iostream>
+
 using namespace std;
 
-class employee 
-{
-private:
-	int number;   
-	float salary; 
-public:
-	// method for getting class data from the user from the keyboard
-	void get()
-		{ wcout << L"Number and salary of employees: "; wcin >> number >> salary; }
-	// the constant method displays the values of the fields on the screen
-	void display() const
-		{ wcout << setw(5) << number << setw(9) << salary << endl; }
+class employee {
+	private:
+		int emp_num;
+        float emp_comp;
+	public:
+		employee(): emp_num(0), emp_comp(0)	{	}
+		employee(int empNum, float empCom): emp_num(empNum), emp_comp(empCom){	}
+		void setData();	
+		void display() const;
 };
 
-int main()
-{
-	// switching the standard output stream to Unicode format
-	_setmode(_fileno(stdout), _O_U16TEXT);
-	// switching the standard input stream to Unicode format
-	_setmode(_fileno(stdin), _O_U16TEXT);
-	
-	employee emp1, emp2, emp3; // object for class employee
+void employee::setData() {	
+	cout << "\nEnter employee Number: ";
+	cin >> emp_num;
+	cout << "Enter employee Compensation: ";
+	cin >> emp_comp;
+	cout << endl;
+}
 
-	// we get information about three employees from the keyboard
-	wcout << L"Enter the details of the three employees\n";
-	emp1.get();
-	emp2.get();
-	emp3.get();
+void employee::display() const {
+	cout << "Employee Number: " << emp_num << endl;
+	cout << "Employee Compensation: $" << emp_comp <<endl;
+}
 
-	// displaying information about each of the employees on the screen
-	wcout << L"\nInformation about the company's employees:\n"
-		  << setw(5) << L"Number" << setw(9) << L"Salary" << endl;
-	emp1.display();
-	emp2.display();
+int main() {
+	employee emp1, emp2;	
+	employee emp3(12, 34.6);
+
+	emp1.setData();	
+	emp2.setData();	
+
+	cout << "\nDetails of first employee: \n";
+	emp1.display();	
+	cout << "\nDetails of second employee: \n";
+	emp2.display();	
+	cout <<"\nDetails of third employee: \n";
 	emp3.display();
 
+	cout <<endl;
 	return 0;
 }
