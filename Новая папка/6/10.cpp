@@ -1,40 +1,80 @@
-#include <iostream>   
+#include<iostream>
+
 using namespace std;
-class Ship
-{
- private:
-  int number;
-  static int amount;
-  int degree;
-  float min;
-  char dir;
- public:
-  Ship():number(0), degree(0), min(0), dir(0)
-  {
-   amount++;
-   number = amount;
-  }
-  Ship(int num, int deg, float m, char d) : number(num), degree(deg), min(m), dir(d)
-  {}
-  void get_sh()
-  {
-   cout << "Enter degree" << endl; cin >> degree;
-   cout << "Enter minutes" << endl; cin >> min;
-   cout << "Enter direction (N, S, E, W)" << endl; cin >> dir;
-  }
-  void disp_sh()
-  { cout << "serial number: " << number << ", direction: " << degree << '\xF8' << min << "'" << dir << endl; }
+
+class angle{
+    int degrees;
+    float minutes;
+    char direction;
+    public:
+        void getAngle();
+        void dispAngle() const;
 };
-int Ship :: amount = 0;
-int main()
-{
- Ship ship1, ship2, ship3;
- ship1.get_sh();
- ship2.get_sh();
- ship3.get_sh();
- ship1.disp_sh();
- ship2.disp_sh();
- ship3.disp_sh();
- system ("pause");
- return 0;
+
+class ship {
+    private:
+		angle latitude, longitude;
+		static int count;
+		unsigned int shipNumber;
+	public:
+		ship() {	
+			count++;
+			shipNumber = count;
+		}
+		void getPosition();	
+		void display() const; 
+};
+
+int ship::count = 0;	//defination of count
+
+void angle::getAngle(){
+    cout << "\nEnter degrees: ";
+	cin >> degrees;
+	cout << "Enter minutes: ";
+	cin >> minutes;
+	cout << "Enter directions(E, W, N, S): ";
+	cin >> direction;
+}
+
+void ship::getPosition() {	
+	cout << "\nEnter longitude of ship: ";
+	longitude.getAngle();
+	cout << "\nEnter latitude of ship: ";
+	latitude.getAngle();
+}
+
+void ship::display() const{	
+	cout << "Ship Serial Number: " << shipNumber << endl;
+	longitude.dispAngle();
+	cout << endl;
+	latitude.dispAngle();
+    cout << endl;
+}
+
+void angle::dispAngle() const{
+	cout << degrees << "\xF8" << minutes << "\' " << direction;
+	if(direction == 'E' || direction == 'e' || direction == 'W' || direction == 'w') {
+		cout << " Longitude !";
+	} if(direction == 'N' || direction == 'n' || direction == 'S' || direction == 's') {
+		cout << " Latitude !";
+	}
+}
+
+int main(){
+    ship ship1, ship2, ship3;	
+	cout <<"\nEnter first ship position: ";
+	ship1.getPosition();	
+	cout <<"\nEnter second ship position: ";
+	ship2.getPosition();	
+	cout <<"\nEnter third ship position: ";
+	ship3.getPosition();
+
+	cout <<"\nFirst Ship Position is: \n";
+	ship1.display();	
+	cout <<"\nSecond Ship Position is: \n";
+	ship2.display();
+	cout <<"\nThird Ship Position is: \n";
+	ship3.display();	
+
+    return 0;
 }
