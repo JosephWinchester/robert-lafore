@@ -8,6 +8,7 @@ class addF{
         void getData();
         void addFraction(addF, addF);
         void display();
+	
 };
 
 void addF::getData(){
