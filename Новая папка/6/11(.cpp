@@ -20,7 +20,7 @@ void calF::getFraction() {
 }
 
 
-void calF::arithOperation(calF frac1, calF frac2, char operatr) {
+void calF::arithOperation(const calF& frac1,const calF& frac2, char operatr) {
 	
 	switch(operatr) {
 		case '+':
