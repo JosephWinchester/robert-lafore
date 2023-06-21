@@ -11,7 +11,7 @@ class Amount
    amount++;
    number = amount;
   }
-  void disp_num()
+  void const disp_num()
   { cout << "My serial number " << number << endl; }
 };
 int Amount :: amount = 0;
