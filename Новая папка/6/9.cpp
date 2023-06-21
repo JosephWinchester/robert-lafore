@@ -16,7 +16,7 @@ void addF::getData(){
 	cin >> num >> temp >> den;
 }
 
-void addF::addFraction(addF f1, addF f2){
+void addF::addFraction(const addF f1, const addF f2){
     num = f1.num * f2.den + f1.den * f2.num;
 	den = f1.den * f2.den;
 }
