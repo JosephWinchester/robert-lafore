@@ -13,15 +13,15 @@ class calF{
             num = n;
             den = d;
         }
-        void displayN(){
+        void const displayN(){
             cout << num << "/" << den;
         }
-        void display(){
+        void const display(){
             cout << setw(7) << num << "/" << den;
         }
 };
 
-void calF::mulF(calF f1, calF f2){
+void calF::mulF(const calF f1, const calF f2){
     num = f1.num * f2.num;
     den = f1.den * f2.den;
 }
