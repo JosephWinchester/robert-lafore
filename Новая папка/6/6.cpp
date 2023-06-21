@@ -13,7 +13,7 @@ class dates {
 	        cout << "Enter employee date of joining in (DD/MM/YYYY) format: ";
 	        cin >> day >> temp >> month >> temp >>year;
         }	
-        void showDate(){
+        void cons showDate(){
             cout << "\nEmployee date of joining: " << day << "/" << month << "/" <<year;
         }
 };
